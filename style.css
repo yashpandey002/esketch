@@ -1,0 +1,260 @@
+/************************/
+/* Root settings */
+/************************/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #ffffff;
+    font-weight: 700;
+    height: 100%;
+}
+
+/************************/
+/* Utility classes */
+/************************/
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.active {
+    background-color: rgba(255, 255, 255, 0.39);
+}
+
+/************************/
+/* Main box */
+/************************/
+
+/* .esketch {
+} */
+
+/************************/
+/* Controls box */
+/************************/
+
+.esketch__controls-box {
+    width: 20%;
+    height: 100%;
+    background-color: #00003f;
+    padding: 120px 0 120px 40px;
+}
+
+/************************/
+/* Modes control box */
+/************************/
+
+.esketch__modes-box {
+    margin-bottom: 6.4rem;
+}
+
+/************************/
+/* Color mode box */
+/************************/
+
+.esketch__color-mode-box {
+    margin-bottom: 24px;
+}
+
+.esketch__color-mode__heading {
+    margin-bottom: 10px;
+}
+
+.esketch__color-box {
+    align-items: center;
+    gap: 5px;
+}
+
+.esketch__color-palete {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+}
+
+.esketch__color-code {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #000000;
+}
+
+/************************/
+/* Rainbow mode box */
+/************************/
+
+/* .esketch__rainbow-mode-box {} */
+
+/************************/
+/* Color mode box & Rainbow mode box common styles */
+/************************/
+
+.esketch__color-mode-box,
+.esketch__rainbow-mode-box {
+    padding: 12px;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.esketch__color-mode__heading,
+.esketch__rainbow-mode__heading {
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.esketch__color-mode-box:hover,
+.esketch__rainbow-mode-box:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.esketch__color-mode-box.active,
+.esketch__rainbow-mode-box.active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/************************/
+/* Erase control box */
+/************************/
+
+.esketch__erase-controls {
+    gap: 4.2rem;
+}
+
+.esketch__erasor-box,
+.esketch__clear-box {
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+    padding: 12px;
+}
+
+.esketch__erasor-box:hover,
+.esketch__clear-box:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.esketch__erasor-box.active,
+.esketch__clear-box.active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.esketch__erasor-img,
+.esketch__clear-img {
+    margin-bottom: 10px;
+}
+
+.esketch__erasor-name,
+.esketch__clear-name {
+    font-size: 1.8rem;
+}
+
+/************************/
+/* Modes control box and Erase control box common styles */
+/************************/
+.esketch__modes__heading,
+.esketch__erase__heading {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 3.2rem;
+}
+
+/************************/
+/* Grid box */
+/************************/
+
+.esketch__grid-box {
+    width: 80%;
+}
+
+.esketch__heading-box {
+    background-color: #00003f;
+    padding: 2rem 0;
+    margin-bottom: 20px;
+}
+
+.esketch__heading {
+    color: #ffffff;
+    font-size: 6.4rem;
+    font-weight: 800;
+}
+
+.esketch__grid-controls {
+    width: 900px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.grid__range-slider {
+    margin-bottom: 2px;
+}
+
+.grid__range-box {
+    color: #00003f;
+    font-size: 1.8rem;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.grid__range__input-box {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.grid-size-value {
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.show-grid-box {
+    font-size: 1.8rem;
+    color: #00003f;
+}
+
+/************************/
+/* Canvas */
+/************************/
+
+.esketch__canvas {
+    height: 450px;
+    width: 900px;
+    background-color: #d6d6d6;
+    margin-left: 40px;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.esketch__canvas div {
+    border: 1px solid #000;
+}

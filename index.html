@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Etch-a-sketch</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./style.css" />
+        <script src="./script.js" defer></script>
+    </head>
+    <body>
+        <main>
+            <div class="esketch flex">
+                <div class="esketch__controls-box">
+                    <div class="esketch__modes-box">
+                        <div class="esketch__modes__heading">Modes</div>
+                        <div
+                            class="esketch__mode-box esketch__color-mode-box active"
+                        >
+                            <h3 class="esketch__color-mode__heading">
+                                Color mode
+                            </h3>
+                            <div class="esketch__color-box flex">
+                                <input
+                                    class="esketch__color-palete"
+                                    type="color"
+                                />
+                                <span class="esketch__color-code">#000000</span>
+                            </div>
+                        </div>
+                        <div
+                            class="esketch__mode-box esketch__rainbow-mode-box"
+                        >
+                            <h3 class="esketch__rainbow-mode__heading">
+                                Rainbow mode 🌈
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="esketch__erase-box">
+                        <div class="esketch__erase__heading">Erase</div>
+                        <div class="esketch__erase-controls flex">
+                            <div class="esketch__erasor-box">
+                                <img
+                                    src="./img/erasor.svg"
+                                    alt="Erasor icon in white color"
+                                    class="esketch__erasor-img"
+                                />
+                                <div class="esketch__erasor-name">Erasor</div>
+                            </div>
+                            <div class="esketch__clear-box">
+                                <img
+                                    src="./img/clear.svg"
+                                    alt="Clear icon in white color"
+                                    class="esketch__clear-img"
+                                />
+                                <div class="esketch__clear-name">Clear</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esketch__grid-box">
+                    <div class="esketch__heading-box">
+                        <h1 class="esketch__heading">Etch-a-sketch</h1>
+                    </div>
+                    <div class="esketch__grid-controls flex">
+                        <div class="grid__range-box flex">
+                            <div class="grid__range__heading">Grid size:</div>
+                            <div class="grid__range__input-box flex">
+                                <div class="grid-size-value">16 x 16</div>
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="64"
+                                    value="16"
+                                    class="grid__range-slider"
+                                    id="myRange"
+                                />
+                            </div>
+                        </div>
+                        <div class="show-grid-box">
+                            Show Grid lines: <input type="checkbox" />
+                        </div>
+                    </div>
+                    <div class="esketch__canvas grid">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
