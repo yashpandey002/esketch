@@ -71,7 +71,9 @@
                         <div class="grid__range-box flex">
                             <div class="grid__range__heading">Grid size:</div>
                             <div class="grid__range__input-box flex">
-                                <div class="grid-size-value">16 x 16</div>
+                                <div class="grid-size-value" id="grid-value">
+                                    16 x 16
+                                </div>
                                 <input
                                     type="range"
                                     min="1"
@@ -83,15 +85,14 @@
                             </div>
                         </div>
                         <div class="show-grid-box">
-                            Show Grid lines: <input type="checkbox" />
+                            Show Grid lines:
+                            <input
+                                type="checkbox"
+                                id="show-grid-lines-checkbox"
+                            />
                         </div>
                     </div>
-                    <div class="esketch__canvas grid">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                    <div class="esketch__canvas grid" id="canvas"></div>
                 </div>
             </div>
         </main>

@@ -250,11 +250,8 @@ body {
     width: 900px;
     background-color: #d6d6d6;
     margin-left: 40px;
-
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
 }
 
-.esketch__canvas div {
+.show-grid-lines div {
     border: 1px solid #000;
 }
