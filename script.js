@@ -1,28 +1,39 @@
 "use strict";
-
-// Controls hover animations
+let currentColorCode = "#000";
+let currentGridCount = 16;
+let isMouseDown = false;
+let currentMode = "color" || "rainbow" || "erasor";
+const colorModeBox = document.querySelector(".esketch__color-mode-box");
+const colorPalette = document.querySelector(".esketch__color-palete");
+const gridSlider = document.querySelector(".grid__range-slider");
+const showGridLinesCheckbox = document.getElementById(
+    "show-grid-lines-checkbox"
+);
 const controlBoxes = document.querySelectorAll(".esketch__mode-box");
-controlBoxes.forEach((box) => {
-    box.addEventListener("click", function () {
-        toggleClicked(box);
-    });
-});
-
-const toggleClicked = function (element) {
-    const controlBoxes = document.querySelectorAll(".esketch__mode-box");
-    controlBoxes.forEach(function (box) {
-        box.classList.remove("active");
-    });
-
-    element.classList.add("active");
-};
-
 const erasorBox = document.querySelector(".esketch__erasor-box");
-erasorBox.addEventListener("click", () => {
-    erasorBox.classList.toggle("active");
+
+// Opening color palette  whenver the color mode box is clicked
+colorModeBox.addEventListener("click", function () {
+    colorPalette.click();
 });
 
-const createGrids = function (NumberOfGrids) {
+colorPalette.addEventListener("change", () => {
+    const colorCodeEl = document.querySelector(".esketch__color-code");
+    currentColorCode = colorPalette.value;
+    colorCodeEl.textContent = `${currentColorCode}`;
+    colorCodeEl.style.color = currentColorCode;
+
+    createGrids(currentGridCount, currentColorCode);
+});
+
+gridSlider.addEventListener("change", () => {
+    currentGridCount = gridSlider.value;
+    const gridValueEL = document.getElementById("grid-value");
+    gridValueEL.textContent = `${currentGridCount} x ${currentGridCount}`;
+    createGrids(currentGridCount, currentColorCode);
+});
+
+const createGrids = function (NumberOfGrids = 16, gridColor = "#000") {
     // Selecting and clear canvas everytime so that elements don't overlape
     const canvas = document.getElementById("canvas");
     canvas.innerText = "";
@@ -32,6 +43,21 @@ const createGrids = function (NumberOfGrids) {
             const gridSquare = document.createElement("div");
             gridSquare.classList.add("grid-square");
             canvas.appendChild(gridSquare);
+
+            gridSquare.addEventListener("mousedown", () => {
+                if (currentMode === "color") {
+                    isMouseDown = true;
+                    gridSquare.style.backgroundColor = `${gridColor}`;
+                }
+            });
+
+            gridSquare.addEventListener("mouseover", () => {
+                if (isMouseDown) {
+                    if (currentMode === "color") {
+                        gridSquare.style.backgroundColor = `${gridColor}`;
+                    }
+                }
+            });
         }
     }
 
@@ -39,27 +65,38 @@ const createGrids = function (NumberOfGrids) {
     canvas.style.gridTemplateRows = `repeat(${NumberOfGrids}, 1fr)`;
     canvas.style.gridTemplateColumns = `repeat(${NumberOfGrids}, 1fr)`;
 };
-createGrids(16);
-
-// Increase or descrease Grid count
-const gridSlider = document.querySelector(".grid__range-slider");
-gridSlider.addEventListener("change", () => {
-    // Fetching current value from slider
-    const currentGridValue = gridSlider.value;
-
-    // Showing current grid value to user
-    const gridValueEL = document.getElementById("grid-value");
-    gridValueEL.textContent = `${currentGridValue} x ${currentGridValue}`;
-
-    // Generating grids dynamically
-    createGrids(currentGridValue);
+window.addEventListener("mouseup", function () {
+    isMouseDown = false;
 });
 
+createGrids(16, "#000");
+
 // Hide or show grid lines
-const showGridLinesCheckbox = document.getElementById(
-    "show-grid-lines-checkbox"
-);
 showGridLinesCheckbox.addEventListener("click", () => {
     const canvas = document.getElementById("canvas");
     canvas.classList.toggle("show-grid-lines");
+});
+
+// Control hover animations
+controlBoxes.forEach((box) => {
+    box.addEventListener("click", function () {
+        erasorBox.classList.remove("active");
+        toggleClicked(box);
+    });
+});
+
+const toggleClicked = function (element) {
+    const controlBoxes = document.querySelectorAll(".esketch__mode-box");
+
+    controlBoxes.forEach(function (box) {
+        box.classList.remove("active");
+    });
+
+    element.classList.add("active");
+    currentMode = element.getAttribute("id");
+};
+
+erasorBox.addEventListener("click", () => {
+    erasorBox.classList.toggle("active");
+    currentMode = "erasor";
 });
