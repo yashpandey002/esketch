@@ -255,3 +255,56 @@ body {
 .show-grid-lines div {
     border: 1px solid #000;
 }
+
+/************************/
+/* Hide project on small screens */
+/************************/
+
+.desktop-use-only {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000;
+
+    font-size: 24px !important;
+    padding: 0 10px;
+    text-align: center;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+/************************/
+/* Media queries*/
+/************************/
+
+@media (max-width: 1250px) {
+    .esketch__controls-box {
+        width: 25%;
+        padding: 120px 0 120px 20px;
+    }
+
+    .esketch__canvas {
+        height: 300px;
+        width: 700px;
+        background-color: #d6d6d6;
+        margin-left: 20px;
+    }
+
+    .esketch__grid-controls {
+        width: 650px;
+    }
+}
+
+@media (max-width: 1000px) {
+    main {
+        display: none;
+    }
+
+    .desktop-use-only {
+        display: flex;
+    }
+}
